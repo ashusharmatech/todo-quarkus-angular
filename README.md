@@ -10,7 +10,7 @@ This is a sample Todo list program written in Quarkus and Angluar.
 Frontend: [todo-frontent-app](/todo-frontent-app) Angluar 9
 
 #### <i class="icon-folder-open"></i>
-Backend: [todo-backed-app](/todo-backed-app) Quarkus, Java 11
+Backend: [todo-backed-app](/todo-backed-app) Quarkus, Java 11,  H2 Database
 
 # Local Build & Deploment
 
