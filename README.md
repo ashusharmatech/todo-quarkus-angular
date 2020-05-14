@@ -1,5 +1,7 @@
 # Todo Quarkus Angluar Application
-![Java CI with Maven](https://github.com/ashusharmatech/todo-quarkus-angular/workflows/Java%20CI%20with%20Maven/badge.svg) ![Node.js CI](https://github.com/ashusharmatech/todo-quarkus-angular/workflows/Node.js%20CI/badge.svg)
+ [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/ashusharmatech/todo-quarkus-angular/issues)
+![Java CI with Maven](https://github.com/ashusharmatech/todo-quarkus-angular/workflows/Java%20CI%20with%20Maven/badge.svg) 
+![Node.js CI](https://github.com/ashusharmatech/todo-quarkus-angular/workflows/Node.js%20CI/badge.svg)
 
 
 
