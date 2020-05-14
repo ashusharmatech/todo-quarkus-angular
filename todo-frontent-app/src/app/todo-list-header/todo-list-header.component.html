@@ -1,5 +1,9 @@
-<header class="header">
-  <h1>Todos</h1>
-  <input class="new-todo" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newTodo.title"
+<h4 class="card-title">Todo list</h4>
+<div class="add-items d-flex">
+  <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?" autofocus=""
+         [(ngModel)]="newTodo.title"
          (keyup.enter)="addTodo()">
-</header>
+  <button class="add btn btn-primary font-weight-bold todo-list-add-btn" (click)="addTodo()">Add</button>
+</div>
+
+
