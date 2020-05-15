@@ -1,0 +1,7 @@
+backend:
+  - todo-backend-app/**/*
+
+frontend: 
+  - todo-frontent-app/**/*
+repo:
+  - ./*
