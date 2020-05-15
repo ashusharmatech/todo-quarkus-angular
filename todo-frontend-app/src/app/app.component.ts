@@ -9,7 +9,7 @@ import {TodoDataService} from './shared/todo-data.service';
   providers: [TodoDataService]
 })
 export class AppComponent implements OnInit {
-  title = 'todo-frontent-app';
+  title = 'todo-frontend-app';
 
   todos: Todo[] = [];
 
