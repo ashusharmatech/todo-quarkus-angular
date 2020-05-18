@@ -1,13 +1,12 @@
-<div class="list-wrapper">
-  <ul class="d-flex flex-column-reverse todo-list" *ngIf="todos.length > 0">
-    <li *ngFor="let todo of todos" [class.completed]="todo.completed">
-      <app-todo-list-item class="component-wrapper"
-        [todo]="todo"
-        (toggleComplete)="onToggleTodoComplete($event)"
-        (remove)="onRemoveTodo($event)"></app-todo-list-item>
-    </li>
+<table class="table table-striped">
+  <tbody *ngIf="todos.length > 0">
+  <tr *ngFor="let todo of todos" [class.completed]="todo.completed">
+    <app-todo-list-item class="component-wrapper"
+                        [todo]="todo"
+                        (toggleComplete)="onToggleTodoComplete($event)"
+                        (remove)="onRemoveTodo($event)"></app-todo-list-item>
 
-  </ul>
-</div>
-
+  </tr>
+  </tbody>
+</table>
 

@@ -1,5 +1,5 @@
 import {Component, OnInit, EventEmitter, Input, Output} from '@angular/core';
-import {Todo} from '../shared/todo';
+import {Todo} from '../_models/todo';
 
 
 @Component({

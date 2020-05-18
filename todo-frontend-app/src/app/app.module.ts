@@ -2,15 +2,17 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {environment} from '../environments/environment';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TodoListComponent} from './todo-list/todo-list.component';
 import {TodoListFooterComponent} from './todo-list-footer/todo-list-footer.component';
 import {TodoListHeaderComponent} from './todo-list-header/todo-list-header.component';
 import {TodoListItemComponent} from './todo-list-item/todo-list-item.component';
 import {FormsModule} from '@angular/forms';
-import {ApiService} from './shared/api.service';
-import {TodoDataService} from './shared/todo-data.service';
+import {ApiService} from './_services/api.service';
+import {TodoDataService} from './_services/todo-data.service';
+import {AlertComponent } from './alert/alert.component';
+import {ErrorInterceptor, fakeBackendProvider, JwtInterceptor} from './_helpers';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import {TodoDataService} from './shared/todo-data.service';
     TodoListComponent,
     TodoListFooterComponent,
     TodoListHeaderComponent,
-    TodoListItemComponent
+    TodoListItemComponent,
+    AlertComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,13 @@ import {TodoDataService} from './shared/todo-data.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [TodoDataService, ApiService, HttpClientModule],
+  providers: [TodoDataService, ApiService, HttpClientModule,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    //fakeBackendProvider
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

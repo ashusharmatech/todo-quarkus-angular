@@ -1,16 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {TodoDataService} from './_services/todo-data.service';
-import { User , Todo} from './_models';
-import {AccountService} from './_services';
+import { Component, OnInit } from '@angular/core';
+import {AccountService, TodoDataService} from '../_services';
+import {Todo, User} from '../_models';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  providers: [TodoDataService]
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class AppComponent implements OnInit {
-  title = 'todo-frontend-app';
+export class HomeComponent implements OnInit {
+
   user: User;
   todos: Todo[] = [];
 
@@ -63,5 +61,6 @@ export class AppComponent implements OnInit {
   logout() {
     this.accountService.logout();
   }
+
 
 }

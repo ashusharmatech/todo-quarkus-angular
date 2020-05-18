@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Todo} from '../shared/todo';
+import {Todo} from '../_models/todo';
 
 @Component({
   selector: 'app-todo-list-footer',

@@ -1,4 +1,4 @@
-package io.todo;
+package io.todo.resources;
 
 import io.quarkus.panache.common.Sort;
 import io.todo.model.Todo;
