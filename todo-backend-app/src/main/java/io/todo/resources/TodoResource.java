@@ -2,30 +2,43 @@ package io.todo.resources;
 
 import io.quarkus.panache.common.Sort;
 import io.todo.model.Todo;
+import io.todo.model.User;
+import io.todo.utils.UserUtil;
+import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.json.Json;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
+import java.security.Principal;
 
 @Path("todos")
-@ApplicationScoped
+@RequestScoped
 @Produces("application/json")
 @Consumes("application/json")
 public class TodoResource {
+
+    @Inject
+    JsonWebToken jwt;
+
     @GET
-    public Response get() {
-        return Response.ok(Todo.listAll(Sort.by("title"))).build();
+    public Response get(@Context SecurityContext ctx) {
+        User user= UserUtil.getUserFromContext(ctx);
+        return Response.ok(Todo.listAllByUser(user,Sort.by("title"))).build();
     }
 
 
     @GET
     @Path("{id}")
-    public Response getSingle(@PathParam Long id) {
+    public Response getSingle(@Context SecurityContext ctx,@PathParam Long id) {
         Todo entity = Todo.findById(id);
         if (entity == null) {
             throw new WebApplicationException("Todo with id of " + id + " does not exist.", 404);
@@ -35,11 +48,11 @@ public class TodoResource {
 
     @POST
     @Transactional
-    public Response create(Todo todo) {
+    public Response create(@Context SecurityContext ctx, Todo todo) {
         if (todo.id != null) {
             throw new WebApplicationException("Id was invalidly set on request.", 422);
         }
-
+        todo.user= UserUtil.getUserFromContext(ctx);
         todo.persist();
         return Response.ok(todo).status(201).build();
     }
@@ -47,7 +60,7 @@ public class TodoResource {
     @PUT
     @Path("{id}")
     @Transactional
-    public Response update(@PathParam Long id, Todo todo) {
+    public Response update(@Context SecurityContext ctx,@PathParam Long id, Todo todo) {
         if (todo.title == null) {
             throw new WebApplicationException("Todo Title was not set on request.", 422);
         }
@@ -66,7 +79,7 @@ public class TodoResource {
     @DELETE
     @Path("{id}")
     @Transactional
-    public Response delete(@PathParam Long id) {
+    public Response delete(@Context SecurityContext ctx,@PathParam Long id) {
         Todo entity = Todo.findById(id);
         if (entity == null) {
             throw new WebApplicationException("Todo with id of " + id + " does not exist.", 404);

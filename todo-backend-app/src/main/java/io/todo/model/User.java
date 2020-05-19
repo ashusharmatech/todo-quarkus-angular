@@ -14,6 +14,9 @@ public class User extends PanacheEntity {
     public static User findByUsernameAndPassword(String username, String password) {
         return find("username = ?1 and password = ?2", username, password).firstResult();
     }
+    public static User findByUsername(String username) {
+        return find("username = ?1", username).firstResult();
+    }
 
     @Override
     public String toString() {
