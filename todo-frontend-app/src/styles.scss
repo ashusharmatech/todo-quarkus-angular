@@ -199,7 +199,7 @@ body {
   text-align: center
 }
 
-.list-wrapper .completed {
+.completed {
   text-decoration: line-through;
   text-decoration-color: #3da5f4
 }
@@ -398,10 +398,10 @@ input[type="checkbox"] {
   font-family: FontAwesome;
   content: "\f00d";
   display: inline-block;
-  padding-right: 3px;
+  padding-right: 2px;
   vertical-align: middle;
-  font-size: .756em;
-  color: #405189
+  font-size: .999em;
+  color: #890001
 }
 
 .list-wrapper ul {

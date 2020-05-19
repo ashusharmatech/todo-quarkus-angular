@@ -13,6 +13,7 @@ import {TodoDataService} from './_services/todo-data.service';
 import {AlertComponent } from './alert/alert.component';
 import {ErrorInterceptor, fakeBackendProvider, JwtInterceptor} from './_helpers';
 import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HomeComponent } from './home/home.component';
     TodoListHeaderComponent,
     TodoListItemComponent,
     AlertComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
