@@ -1,5 +1,5 @@
 # Todo Frontend App
-
+![Node.js CI](https://github.com/ashusharmatech/todo-quarkus-angular/workflows/Node.js%20CI/badge.svg)
 [![Known Vulnerabilities](https://snyk.io/test/github/ashusharmatech/todo-quarkus-angular/badge.svg?targetFile=todo-frontend-app/package.json)](https://snyk.io/test/github/ashusharmatech/todo-quarkus-angular?targetFile=todo-frontend-app/package.json)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.5.
