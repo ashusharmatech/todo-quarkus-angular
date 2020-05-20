@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.todoDataService
+     this.todoDataService
       .getAllTodos()
       .subscribe(
         (todos) => {

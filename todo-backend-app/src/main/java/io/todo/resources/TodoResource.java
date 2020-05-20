@@ -7,6 +7,7 @@ import io.todo.utils.UserUtil;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -30,6 +31,7 @@ public class TodoResource {
     JsonWebToken jwt;
 
     @GET
+    @RolesAllowed({"user"})
     public Response get(@Context SecurityContext ctx) {
         User user= UserUtil.getUserFromContext(ctx);
         return Response.ok(Todo.listAllByUser(user,Sort.by("title"))).build();
@@ -38,6 +40,7 @@ public class TodoResource {
 
     @GET
     @Path("{id}")
+    @RolesAllowed({"user"})
     public Response getSingle(@Context SecurityContext ctx,@PathParam Long id) {
         Todo entity = Todo.findById(id);
         if (entity == null) {
@@ -48,6 +51,7 @@ public class TodoResource {
 
     @POST
     @Transactional
+    @RolesAllowed({"user"})
     public Response create(@Context SecurityContext ctx, Todo todo) {
         if (todo.id != null) {
             throw new WebApplicationException("Id was invalidly set on request.", 422);
@@ -60,6 +64,7 @@ public class TodoResource {
     @PUT
     @Path("{id}")
     @Transactional
+    @RolesAllowed({"user"})
     public Response update(@Context SecurityContext ctx,@PathParam Long id, Todo todo) {
         if (todo.title == null) {
             throw new WebApplicationException("Todo Title was not set on request.", 422);
@@ -79,6 +84,7 @@ public class TodoResource {
     @DELETE
     @Path("{id}")
     @Transactional
+    @RolesAllowed({"user"})
     public Response delete(@Context SecurityContext ctx,@PathParam Long id) {
         Todo entity = Todo.findById(id);
         if (entity == null) {

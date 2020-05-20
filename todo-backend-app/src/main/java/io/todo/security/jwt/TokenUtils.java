@@ -20,22 +20,6 @@ public class TokenUtils {
         // no-op: utility class
     }
 
-    /**
-     * Utility method to generate a JWT string from a JSON resource file that is signed by the privateKey.pem
-     * test resource key, possibly with invalid fields.
-     *
-     * @param jsonResName - name of test resources file
-     * @param timeClaims - used to return the exp, iat, auth_time claims
-     * @return the JWT string
-     * @throws Exception on parse failure
-     */
-    public static String generateTokenString(String jsonResName, Map<String, Long> timeClaims)
-            throws Exception {
-        // Use the test private key associated with the test public key for a valid signature
-        PrivateKey pk = readPrivateKey("/privateKey.pem");
-        return generateTokenString(pk, "/privateKey.pem", jsonResName, timeClaims);
-    }
-
 
     public static String generateTokenString( Map<String, Object> claims, Map<String, Long> timeClaims)
             throws Exception {

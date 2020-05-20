@@ -14,6 +14,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
@@ -109,17 +110,19 @@ public class UserResource {
         }
         HashMap<String, Long> timeClaims = new HashMap<>();
         HashMap<String, Object> claims = new HashMap<>();
+        claims.put("preferred_username", entity.username);
         claims.put("iss", "https://quarkus.io/using-jwt-rbac");
         claims.put("jti", "a-123");
         claims.put("sub", "jdoe-using-jwt-rbac");
-        claims.put("email", "jdoe@quarkus.io");
-        claims.put("preferred_username", entity.username);
         claims.put("aud", "using-jwt-rbac");
+        claims.put("groups", Arrays.asList("Echoer","user","Tester","Subscriber","group2"));
+
         HashMap<String, Object> roleMappings = new HashMap<>();
-        roleMappings.put("group1", "Group1MappedRole");
-        roleMappings.put("group2", "Group2MappedRole");
+        roleMappings.put("group1","Group1MappedRole");
+        roleMappings.put("group2","Group2MappedRole");
+
         claims.put("roleMappings", roleMappings);
-        claims.put("groups",new String[] {"Echoer","Tester","Subscriber","group2"});
+
         String token = TokenUtils.generateTokenString(claims, timeClaims);
         UserTokenDto userTokenDto = new UserTokenDto(1, userLoginDto.getUsername(),userLoginDto.getUsername(),userLoginDto.getUsername(),token);
         return Response.ok(userTokenDto).build();

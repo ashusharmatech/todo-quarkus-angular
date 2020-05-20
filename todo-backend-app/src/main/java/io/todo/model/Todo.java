@@ -5,6 +5,7 @@ import io.quarkus.panache.common.Sort;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -14,6 +15,7 @@ public class Todo extends PanacheEntity {
     public boolean completed;
     @ManyToOne
     public User user;
+    public Date dueDate;
 
     public static List<User> listAllByUser(User user, Sort sort) {
         return list("user = ?1 ",sort,user);
