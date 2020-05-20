@@ -1,6 +1,7 @@
 # todo-backend-app project
 
 ![Java CI with Maven](https://github.com/ashusharmatech/todo-quarkus-angular/workflows/Java%20CI%20with%20Maven/badge.svg) 
+![snyk](https://snyk.io/test/github/ashusharmatech/todo-quarkus-angular/badge.svg?targetFile=todo-backend-app/pom.xml)
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
