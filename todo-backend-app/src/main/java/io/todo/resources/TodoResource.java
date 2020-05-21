@@ -34,7 +34,7 @@ public class TodoResource {
     @RolesAllowed({"user"})
     public Response get(@Context SecurityContext ctx) {
         User user= UserUtil.getUserFromContext(ctx);
-        return Response.ok(Todo.listAllByUser(user,Sort.by("title"))).build();
+        return Response.ok(Todo.listAllByUser(user,Sort.by("dueDate"))).build();
     }
 
 

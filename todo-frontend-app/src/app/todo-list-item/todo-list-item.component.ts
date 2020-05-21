@@ -31,5 +31,4 @@ export class TodoListItemComponent implements OnInit {
     this.remove.emit(todo);
   }
 
-
 }

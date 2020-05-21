@@ -14,6 +14,9 @@ import {AlertComponent } from './alert/alert.component';
 import {ErrorInterceptor, fakeBackendProvider, JwtInterceptor} from './_helpers';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { DateRemainingPipe } from './pipes/date-remaining.pipe';
 
 @NgModule({
   declarations: [
@@ -24,13 +27,16 @@ import { NavbarComponent } from './navbar/navbar.component';
     TodoListItemComponent,
     AlertComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    DateRemainingPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [TodoDataService, ApiService, HttpClientModule,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

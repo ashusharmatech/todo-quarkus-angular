@@ -1,6 +1,7 @@
 <div class="form-check">
   <label class="form-check-label">
-    <input class="toggle" type="checkbox"  (click)="toggleTodoComplete(todo)"  [checked]="todo.completed">{{todo.title}}
+    <input class="toggle" type="checkbox" (click)="toggleTodoComplete(todo)"  [checked]="todo.completed">{{todo.title}}
+    <label class="badge badge-primary"> {{todo.dueDate | dateRemaining}}</label>
   <i class="input-helper"></i></label>
 </div>
 <i class="remove mdi mdi-close-circle-outline" (click)="removeTodo(todo)"></i>
