@@ -76,7 +76,7 @@ public class TodoResource {
             throw new WebApplicationException("Todo with id of " + id + " does not exist.", 404);
         }
 
-        entity.title = todo.title;
+        entity.completed = todo.completed;
 
         return Response.ok(entity).build();
     }
