@@ -24,7 +24,7 @@ import java.util.logging.Logger;
 @Consumes("application/json")
 public class UserResource {
 
-    private final static Logger LOG = Logger.getLogger(UserResource.class.getName());
+    private static final Logger LOG = Logger.getLogger(UserResource.class.getName());
 
 
     @GET
@@ -133,7 +133,7 @@ public class UserResource {
     @POST
     @Path("register")
     @Transactional
-    public Response login(User user) throws Exception {
+    public Response register(User user) throws Exception {
         LOG.info("User received for registration "+ user);
         if (user.id != null) {
             throw new WebApplicationException("Id was invalidly set on request.", 422);

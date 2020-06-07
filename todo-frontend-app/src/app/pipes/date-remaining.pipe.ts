@@ -10,7 +10,7 @@ export class DateRemainingPipe implements PipeTransform {
       const seconds = Math.floor((+new Date(value.substring(0, value.length - 5)) - +new Date()) / 1000);
       if (seconds < 29) // less than 30 seconds ago will show as 'Just now'
       {
-        return 'Just now';
+        return 'Due now';
       }
       const intervals = {
         year: 31536000,

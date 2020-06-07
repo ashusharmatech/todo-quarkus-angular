@@ -28,7 +28,7 @@ import { DateRemainingPipe } from './pipes/date-remaining.pipe';
     AlertComponent,
     HomeComponent,
     NavbarComponent,
-    DateRemainingPipe
+    DateRemainingPipe,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +36,8 @@ import { DateRemainingPipe } from './pipes/date-remaining.pipe';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+
   ],
   providers: [TodoDataService, ApiService, HttpClientModule,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
