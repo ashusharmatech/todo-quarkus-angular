@@ -7,16 +7,16 @@
 
 # Description
 
-This is a sample Todo list program written in Quarkus and Angluar. 
+This is a sample Todo list program written in Quarkus and Angular. 
 
 Frontend: [todo-frontend-app](/todo-frontends-app) Angluar 9
 
 #### <i class="icon-folder-open"></i>
 Backend: [todo-backed-app](/todo-backed-app) Quarkus, Java 11,  H2 Database
 
-# Local Build & Deploment
+# Local Build & Deployment
 
-Both the projects have their own  README.md files with instructions to start the application in local.
+Both projects have their own  README.md files with instructions to start the application in local.
 
 1. [Frontend README.md](/todo-frontend-app/README.md)
 2. [Backend README.md](/todo-backend-app/README.md)
@@ -29,6 +29,6 @@ Frontend application runs on localhost:4200
 
 Backend application runs on localhost:8080
 
-Fronend will call the REST Api exposed by the Backend to create, update, delete and get the Todos.
+The frontend will call the REST API exposed by the Backend to create, update, delete, and get the Todos.
 
 
