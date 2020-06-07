@@ -1,16 +1,12 @@
 <h4 class="card-title">Todo list</h4>
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<div class="add-items d-flex">
+  <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?" autofocus=""
+         [(ngModel)]="newTodo.title"
+         (keyup.enter)="addTodo()">
 
-  <div class="add-items d-flex">
-    <input type="text" formControlName="todoText" class="form-control todo-list-input"
-           placeholder="What do you need to do today?" autofocus="" [(ngModel)]="newTodo.title"
-           (keyup.enter)="addTodo()" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+  <input type="text" placeholder="Datepicker" [(ngModel)]="newTodo.dueDate" class="form-control" bsDatepicker [bsConfig]="{ isAnimated: true , dateInputFormat: 'DD-MM-YYYY'}">
 
-    <input type="text" formControlName="dueDateText" placeholder="Datepicker" [(ngModel)]="newTodo.dueDate"
-           class="form-control" bsDatepicker [bsConfig]="{ isAnimated: true , dateInputFormat: 'DD-MM-YYYY'}">
-
-    <button class="add btn btn-primary font-weight-bold todo-list-add-btn" (click)="addTodo()">Add</button>
-  </div>
-</form>
+  <button class="add btn btn-primary font-weight-bold todo-list-add-btn" (click)="addTodo()">Add</button>
+</div>
 
 
